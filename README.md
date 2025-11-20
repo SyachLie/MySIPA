@@ -52,7 +52,7 @@ MySIPA adalah aplikasi Sistem Informasi Akademik berbasis web yang dibangun meng
 
 ## 🛠️ Teknologi yang Digunakan
 
-* **Backend:** PHP 8.x, CodeIgniter 4 Framework.
+* **Backend:** PHP 8.4.0, CodeIgniter 4 Framework.
 * **Database:** MySQL.
 * **Frontend:** HTML5, CSS3 (Custom Modern Style), JavaScript.
 * **Libraries:** SweetAlert2 (untuk notifikasi).
@@ -87,8 +87,8 @@ Ikuti langkah ini untuk menjalankan projek di komputer lokal:
         ```
 
 4.  **Jalankan Aplikasi**
-    * Jika menggunakan XAMPP, pastikan folder proyek ada di `htdocs`.
-    * Akses melalui browser: `http://localhost/mysipa/`
+    * Jika menggunakan WampServer, pindahkan folder `mysipa` ke dalam folder `C:\wamp64\www\`.
+    * Akses melalui browser: `http://localhost/mysipa/public/`.
 
 ---
 
