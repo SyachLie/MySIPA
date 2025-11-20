@@ -113,6 +113,8 @@ Gunakan akun berikut untuk pengujian:
 | **Mahasiswa** | ******* | `*******` |
 | **Dosen** | ******* | `*******` |
 
+Jika ingin menguji, silakan hubungi admin 😁
+
 ---
 
 ## 📝 Lisensi
