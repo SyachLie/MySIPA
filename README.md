@@ -1,60 +1,126 @@
-# CodeIgniter 4 Framework
+# MySIPA - Sistem Informasi Perkuliahan Akademik 🎓
 
-## What is CodeIgniter?
+MySIPA adalah aplikasi Sistem Informasi Akademik berbasis web yang dibangun menggunakan **CodeIgniter 4**. Aplikasi ini dirancang untuk menangani proses akademik mulai dari pengelolaan data master, penyusunan KRS (Kartu Rencana Studi) oleh mahasiswa, hingga pengisian nilai oleh dosen.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+### Login Page
+<img width="600" alt="Screenshot 2025-11-20 212940" src="https://github.com/user-attachments/assets/f08bcfcb-f62d-4609-9829-7b9577bc1ec5" />
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+### Dashboard Mahasiswa
+<img width="600" alt="Screenshot 2025-11-20 213325" src="https://github.com/user-attachments/assets/51b61c2f-e33b-4c68-84b9-824af63d4991" />
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+### Dashboard Dosen
+<img width="600" alt="Screenshot 2025-11-20 213430" src="https://github.com/user-attachments/assets/57cb90c1-3a2b-4b71-bedc-0455caecb720" />
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### Dashboard Admin
+<img width="600" alt="Screenshot 2025-11-20 213451" src="https://github.com/user-attachments/assets/5fabfebc-582e-4c26-9024-97ca4e776bf7" />
 
-## Important Change with index.php
+## 🚀 Fitur Utama
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 1. 🔐 Autentikasi & Keamanan
+* **Multi-Level Login:** Admin, Dosen, dan Mahasiswa.
+* **Password Hashing:** Menggunakan `password_hash()` (Bcrypt) untuk keamanan maksimal.
+* **Session Management:** Proteksi rute menggunakan Filter/Middleware (cegah akses paksa tanpa login).
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### 2. 👤 Panel Mahasiswa
+* **Dashboard Informatif:** Ringkasan IPK, Total SKS, dan jumlah mata kuliah yang diambil.
+* **KRS Online:**
+    * Melihat jadwal tersedia.
+    * Validasi otomatis (cegah pengambilan mata kuliah ganda).
+    * Hapus mata kuliah dengan konfirmasi keamanan.
+* **KHS (Kartu Hasil Studi):** Melihat riwayat nilai dan status kelulusan mata kuliah.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+### 3. 👨‍🏫 Panel Dosen
+* **Jadwal Mengajar:** Melihat daftar kelas yang diampu.
+* **Input Nilai:** Form pengisian nilai mahasiswa yang terintegrasi.
+* **Notifikasi:** Pop-up sukses saat nilai berhasil disimpan.
 
-## Repository Management
+### 4. 🛠 Panel Admin
+* **CRUD Data Master:**
+    * Mahasiswa & Dosen (Dilengkapi fitur **Safe Update** untuk ganti NIM/NIDN tanpa merusak relasi data).
+    * Mata Kuliah.
+    * Ruangan.
+    * Jadwal Kuliah.
+* **Manajemen User:** Reset password pengguna.
+* **Statistik Dashboard:** Penghitungan real-time jumlah data.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### 5. 🎨 UI/UX Modern
+* **Sidebar Navigation:** Menu navigasi responsif di sebelah kiri.
+* **SweetAlert2:** Notifikasi pop-up yang interaktif untuk Sukses, Gagal, dan Konfirmasi Hapus.
+* **Clean Design:** Tampilan tabel dan form yang rapi dan mudah dibaca.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+---
 
-## Contributing
+## 🛠️ Teknologi yang Digunakan
 
-We welcome contributions from the community.
+* **Backend:** PHP 8.4.0, CodeIgniter 4 Framework.
+* **Database:** MySQL.
+* **Frontend:** HTML5, CSS3 (Custom Modern Style), JavaScript.
+* **Libraries:** SweetAlert2 (untuk notifikasi).
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+---
 
-## Server Requirements
+## 💻 Cara Instalasi (Localhost)
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+Ikuti langkah ini untuk menjalankan projek di komputer lokal:
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+1.  **Clone Repositori**
+    ```bash
+    git clone [https://github.com/username-kamu/mysipa.git](https://github.com/username-kamu/mysipa.git)
+    ```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+2.  **Konfigurasi Database**
+    * Buat database baru di phpMyAdmin bernama `mysipa`.
+    * Impor file `mysipa.sql` (sertakan file ini di repo kamu) ke dalam database tersebut.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+3.  **Konfigurasi Environment (CI4)**
+    * Copy file `env` menjadi `.env`.
+    * Buka file `.env` dan atur konfigurasi berikut:
+        ```ini
+        CI_ENVIRONMENT = development
+        app.baseURL = 'http://localhost/mysipa/public/'
+        
+        database.default.hostname = localhost
+        database.default.database = mysipa
+        database.default.username = root
+        database.default.password = 
+        database.default.DBDriver = MySQLi
+        ```
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+4.  **Jalankan Aplikasi**
+    * Jika menggunakan WampServer, pindahkan folder `mysipa` ke dalam folder `C:\wamp64\www\`.
+    * Akses melalui browser: `http://localhost/mysipa/public/`.
+
+---
+
+## 📂 Struktur Database
+
+Aplikasi ini menggunakan tabel relasional utama:
+* `user`: Menyimpan data login (username, password, role).
+* `mahasiswa` & `dosen`: Data profil.
+* `mata_kuliah`: Data kurikulum.
+* `jadwal`: Menghubungkan Dosen, Matkul, dan Ruangan.
+* `rencana_studi`: Transaksi pengambilan KRS dan Nilai.
+
+---
+
+## 🔑 Akun Demo (Default)
+
+Gunakan akun berikut untuk pengujian:
+
+| Role | Username / ID | Password |
+| :--- | :--- | :--- |
+| **Admin** | ******* | `*******` |
+| **Mahasiswa** | ******* | `*******` |
+| **Dosen** | ******* | `*******` |
+
+Jika ingin menguji, silakan hubungi admin 😁
+
+---
+
+## 📝 Lisensi
+
+Projek ini dibuat untuk tujuan pendidikan/tugas akhir. Silakan dikembangkan lebih lanjut.
+
+---
+
+*Dibuat dengan ❤️ oleh [SyachLie]*
