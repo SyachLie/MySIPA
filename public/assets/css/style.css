@@ -1,0 +1,379 @@
+/* =========================================
+   1. GLOBAL RESET & SETTING
+   ========================================= */
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin; /* Untuk Firefox */
+    scrollbar-color: #aab7c4 transparent;
+}
+
+/* Custom Scrollbar untuk Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #aab7c4;
+    border-radius: 20px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5; /* Abu-abu sangat muda (clean) */
+    color: #343a40;
+    overflow: hidden; /* PENTING: Agar body tidak scroll double */
+}
+
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 0; }
+hr { border: 0; height: 1px; background: #e0e0e0; margin: 20px 0; }
+a { text-decoration: none; }
+
+/* =========================================
+   2. LOGIN PAGE (Masih sama, dirapikan dikit)
+   ========================================= */
+/* Kita targetkan body yang punya class login-page-body */
+body.login-page-body {
+    /* Reset gaya global dashboard */
+    background: linear-gradient(135deg, #0f253b 0%, #1e4b75 100%); /* Biru Tua */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh; /* Full layar */
+    overflow: auto; /* Login boleh discroll kalau layar kecil */
+    
+    /* Teknik Centering Paling Ampuh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px; /* Agar tidak terlalu lebar */
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* Bayangan lebih tebal biar pop-up */
+    text-align: center;
+    margin: 20px; /* Jaga jarak aman di HP */
+    position: relative;
+    z-index: 10;
+}
+
+.login-header h2 { 
+    color: #0f253b; 
+    font-size: 28px; 
+    font-weight: 700; 
+    margin-bottom: 5px; 
+}
+
+.login-header p {
+    color: #6c757d;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.login-form .input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.login-form input:focus {
+    border-color: #1e4b75;
+    box-shadow: 0 0 0 3px rgba(30, 75, 117, 0.2);
+    outline: none;
+}
+
+.login-button {
+    background: linear-gradient(135deg, #1e4b75, #163452);
+    width: 100%;
+    padding: 14px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* =========================================
+   3. LAYOUT DASHBOARD (SIDEBAR FIXED)
+   ========================================= */
+
+/* Wrapper membungkus layar penuh tanpa scroll di luar */
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Mengisi 100% tinggi layar */
+    overflow: hidden; /* Tidak boleh ada scroll di wrapper */
+}
+
+/* 1. PERBAIKI SCROLLBAR (Biar Tipis) */
+/* Ini menargetkan scrollbar di seluruh web */
+::-webkit-scrollbar {
+    width: 8px; /* Ukuran lebar scrollbar (sebelumnya standar browser 17px) */
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #aab7c4; /* Warna batang scroll */
+    border-radius: 20px;       /* Biar bulat */
+    border: 3px solid transparent; /* Trik biar terlihat lebih tipis */
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #7f8c8d;
+}
+
+/* --- SIDEBAR (DIAM / FIXED) --- */
+.sidebar {
+    width: 260px;
+    /* WARNA BIRU TUA (DARK NAVY) */
+    background: linear-gradient(180deg, #0f253b 0%, #163452 100%);
+    color: #ecf0f1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 15px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 100; /* Agar bayangan di atas konten */
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.sidebar p {
+    color: #aab7c4;
+    font-size: 13px;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+/* Menu Sidebar */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: #aab7c4;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateX(5px); /* Efek geser dikit pas hover */
+}
+
+/* 2. STYLE BARU UNTUK FOOTER DI SIDEBAR */
+.sidebar-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Garis tipis pemisah */
+    text-align: center;
+    font-size: 12px;
+    color: #6c757d; /* Warna abu agak gelap biar ga mencolok */
+}
+
+.sidebar-footer p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Tombol Logout */
+.sidebar .logout {
+    margin-top: auto;
+    margin-bottom: 10px;
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #ff6b6b;
+    justify-content: center;
+    font-weight: 600;
+}
+.sidebar .logout:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: none;
+}
+
+/* --- MAIN CONTENT (BERGERAK / SCROLL) --- */
+.main-content {
+    flex-grow: 1;
+    background-color: #f0f2f5;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* RAHASIANYA DISINI: Cuma ini yang bisa scroll */
+    height: 100vh; /* Full height agar scrollbar muncul di sini */
+}
+
+/* Judul Halaman Utama (Yang paling atas) */
+.main-content h1 {
+    font-size: 28px;
+    color: #0f253b;      /* Warna Biru Tua */
+    font-weight: 800;    /* Font Tebal */
+    margin-top: 0;
+    margin-bottom: 30px; /* Jarak ke konten di bawahnya */
+    
+    /* INI GARISNYA */
+    padding-bottom: 15px;            /* Jarak teks ke garis */
+    border-bottom: 3px solid #dce4ec; /* Garis tebal warna abu kebiruan */
+    width: 100%;                     /* Garis memanjang full ke kanan */
+}
+
+/* Sembunyikan garis hr lama (biar ga double/jelek) */
+.main-content hr {
+    display: none;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #888;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* =========================================
+   4. KOMPONEN ELEMEN (Cards, Tables, Forms)
+   ========================================= */
+
+/* Card Style (Kotak Putih) */
+.card, .form-box, .ipk-box, table, .stat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04); /* Bayangan halus modern */
+    border: none;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 18px;
+    border-bottom: 2px solid #e9ecef;
+}
+table td {
+    padding: 18px;
+    border-bottom: 1px solid #f1f1f1;
+    color: #555;
+}
+table tr:hover td {
+    background-color: #fbfbfb; /* Highlight baris saat dihover */
+}
+
+/* Form Box */
+.form-box { padding: 30px; margin-bottom: 30px; }
+.form-box h4 { margin-bottom: 20px; font-size: 18px; color: #0f253b; }
+
+.form-box input, .form-box select {
+    width: 100%; padding: 12px 15px; margin-bottom: 20px;
+    border: 1px solid #e0e0e0; border-radius: 8px;
+    background-color: #fcfcfc;
+    transition: border 0.3s;
+}
+.form-box input:focus, .form-box select:focus {
+    outline: none; border-color: #1e4b75; background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(30, 75, 117, 0.1);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block; padding: 10px 20px; text-decoration: none; color: #fff;
+    border-radius: 8px; border: none; cursor: pointer; font-size: 14px; font-weight: 600;
+    transition: all 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+.btn:active { transform: translateY(0); }
+
+.btn-info { background: linear-gradient(135deg, #a88416, #a88416); }
+.btn-primary { background: linear-gradient(135deg, #1e4b75, #163452); } /* Biru senada sidebar */
+.btn-success { background: linear-gradient(135deg, #28a745, #218838); }
+.btn-danger  { background: linear-gradient(135deg, #dc3545, #c82333); }
+.btn-warning { background: linear-gradient(135deg, #ffc107, #e0a800); color: #212529; }
+
+/* IPK Box Spesial */
+.ipk-box {
+    text-align: center; padding: 40px;
+    border-top: 5px solid #1e4b75; /* Aksen biru di atas */
+}
+.ipk-box h2 { font-size: 48px; color: #1e4b75; margin: 10px 0; }
+
+/* Dashboard Stat Cards */
+.stat-cards-container { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 25px; }
+.stat-card {
+    flex: 1; min-width: 240px; padding: 25px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    color: white; position: relative; overflow: hidden;
+}
+/* Efek lingkaran hiasan di background kartu */
+.stat-card::after {
+    content: ''; position: absolute; top: -20px; right: -20px;
+    width: 100px; height: 100px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+}
+
+.stat-card h2 { color: white; font-size: 36px; font-weight: 800; margin-bottom: 5px; }
+.stat-card p { font-size: 15px; opacity: 0.9; font-weight: 500; }
+
+.stat-card.blue   { background: linear-gradient(135deg, #1e4b75, #153652); }
+.stat-card.green  { background: linear-gradient(135deg, #20c997, #0f966e); }
+.stat-card.orange { background: linear-gradient(135deg, #ffc107, #fd7e14); }
+.stat-card.red    { background: linear-gradient(135deg, #ff6b6b, #fa5252); }
