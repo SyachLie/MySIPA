@@ -2,8 +2,7 @@
 
 MySIPA adalah aplikasi Sistem Informasi Akademik berbasis web yang dibangun menggunakan **CodeIgniter 4**. Aplikasi ini dirancang untuk menangani proses akademik mulai dari pengelolaan data master, penyusunan KRS (Kartu Rencana Studi) oleh mahasiswa, hingga pengisian nilai oleh dosen.
 
-![MySIPA Dashboard](assets/screenshots/dashboard-preview.png)
-*(Jangan lupa ganti path gambar ini dengan screenshot dashboard kamu)*
+![MySIPA Login Page]<img width="2879" height="1555" alt="Screenshot 2025-11-20 212940" src="https://github.com/user-attachments/assets/f08bcfcb-f62d-4609-9829-7b9577bc1ec5" />
 
 ## 🚀 Fitur Utama
 
