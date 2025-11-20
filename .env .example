@@ -1,0 +1,29 @@
+# --------------------------------------------------------------------
+# CONTOH KONFIGURASI ENVIRONMENT (TEMPLATE)
+# --------------------------------------------------------------------
+# File ini AMAN untuk di-upload ke GitHub.
+# Cara Pakai:
+# 1. Copy file ini.
+# 2. Paste dan rename menjadi ".env".
+# 3. Isi password database sesuai komputer masing-masing.
+# --------------------------------------------------------------------
+#
+# --- LINGKUNGAN KERJA ---
+# development = Mode pengembang (Error ditampilkan, cocok untuk coding)
+# production  = Mode live (Error disembunyikan, cocok untuk web asli)
+CI_ENVIRONMENT = development
+#
+# --- ALAMAT WEBSITE ---
+# Sesuaikan dengan nama folder di htdocs atau www
+app.baseURL = 'http://localhost/mysipa/public/'
+#
+# --- KONEKSI DATABASE ---
+database.default.hostname = localhost
+database.default.database = db
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+#
+# --- OPSIONAL (ENKRIPSI) ---
+# app.encryptionKey =
